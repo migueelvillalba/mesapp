@@ -1,0 +1,11 @@
+stateDiagram-v2
+  [*] --> CONFIRMADO: pedido creado localmente
+  CONFIRMADO --> EN_PREPARACION: cocina
+  CONFIRMADO --> CANCELADO: mesero / administrador
+  EN_PREPARACION --> LISTO: cocina
+  EN_PREPARACION --> CANCELADO: mesero / administrador
+  LISTO --> ENTREGADO: mesero / administrador / domiciliario asignado
+  ENTREGADO --> [*]
+  CANCELADO --> [*]
+  note right of CONFIRMADO: BORRADOR está en el esquema,
+    la API actual confirma al crear.

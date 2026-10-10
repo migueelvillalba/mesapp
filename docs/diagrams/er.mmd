@@ -1,0 +1,61 @@
+erDiagram
+  RESTAURANTE ||--o{ INSTALACION : tiene
+  RESTAURANTE ||--o{ EMPLEADO : autoriza
+  RESTAURANTE ||--o{ MESA : configura
+  RESTAURANTE ||--o{ CATEGORIA : agrupa
+  RESTAURANTE ||--o{ PRODUCTO : ofrece
+  CATEGORIA ||--o{ PRODUCTO : contiene
+  EMPLEADO ||--o{ PEDIDO : crea
+  MESA ||--o{ PEDIDO : recibe
+  PEDIDO ||--|{ DETALLE_PEDIDO : contiene
+  PRODUCTO ||--o{ DETALLE_PEDIDO : snapshot
+  PEDIDO ||--o{ HISTORIAL_ESTADO_PEDIDO : registra
+  EMPLEADO ||--o{ HISTORIAL_ESTADO_PEDIDO : cambia
+  PEDIDO ||--o{ ASIGNACION_DOMICILIARIO : asigna
+  EMPLEADO ||--o{ ASIGNACION_DOMICILIARIO : reparte
+  RESTAURANTE ||--o{ EVENTO_OUTBOX : publica
+  INSTALACION ||--o{ EVENTO_OUTBOX : origina
+  RESTAURANTE ||--o{ EVENTO_INBOX : recibe
+  RESTAURANTE ||--o{ TRABAJO_IMPRESION : mantiene
+  PEDIDO ||--o{ TRABAJO_IMPRESION : imprime
+  RESTAURANTE ||--o{ REGISTRO_AUDITORIA : audita
+  EMPLEADO ||--o{ INTENTOS_PIN : limita
+  RESTAURANTE {
+    uuid id PK
+    varchar nombre
+    boolean activo
+  }
+  PEDIDO {
+    uuid id PK
+    uuid restaurante_id FK
+    uuid empleado_id FK
+    uuid mesa_id FK
+    varchar tipo
+    varchar estado
+    numeric total
+    varchar idempotency_key
+    bigint version
+  }
+  DETALLE_PEDIDO {
+    uuid id PK
+    uuid pedido_id FK
+    uuid producto_id FK
+    varchar nombre_snapshot
+    numeric precio_snapshot
+    int cantidad
+  }
+  EVENTO_OUTBOX {
+    uuid id PK
+    uuid instalacion_id FK
+    uuid entidad_id
+    bigint secuencia
+    jsonb payload
+    varchar estado
+    int intentos
+  }
+  EVENTO_INBOX {
+    uuid restaurante_id PK,FK
+    uuid evento_id PK
+    varchar payload_hash
+    jsonb payload
+  }

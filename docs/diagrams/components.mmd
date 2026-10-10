@@ -1,0 +1,16 @@
+flowchart LR
+  Tablet[Tablet React / Vite]
+  Kitchen[Terminal de cocina React]
+  Local[Spring Boot perfil local]
+  Central[Spring Boot perfil central]
+  LocalDB[(PostgreSQL local)]
+  CentralDB[(PostgreSQL central Inbox)]
+  Agent[Servicio Java Windows]
+  Adapter[PrinterAdapter simulado]
+  Tablet -->|HTTP sesión PIN| Local
+  Kitchen -->|HTTP + STOMP autenticado| Local
+  Local -->|JDBC / Flyway| LocalDB
+  Local -->|HTTPS JSON con token| Central
+  Central -->|Inbox idempotente| CentralDB
+  Agent -->|claim/result Bearer| Local
+  Agent --> Adapter
