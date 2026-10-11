@@ -1,0 +1,15 @@
+sequenceDiagram
+  participant O as OperationalController
+  participant DB as PostgreSQL local
+  participant A as PrinterService Windows
+  participant P as SimulatedPrinterAdapter
+  O->>DB: Inserta trabajo PENDIENTE junto al pedido
+  loop cada 4 segundos
+    A->>DB: POST /api/printer/jobs/claim (Bearer)
+    DB-->>A: Reclama atómicamente PENDIENTE → ENVIADO
+    A->>P: print(job)
+    P-->>A: Escribe traza; PENDIENTE_VERIFICACION
+    A->>DB: POST /jobs/{id}/result
+    DB-->>A: Resultado registrado
+  end
+  Note over A,P: El adaptador de desarrollo no verifica el papel USB.

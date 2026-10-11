@@ -1,0 +1,21 @@
+sequenceDiagram
+  participant O as OutboxSyncWorker local
+  participant L as PostgreSQL local
+  participant C as CentralSyncController
+  participant R as PostgreSQL central Inbox
+  O->>L: Lee hasta 50 eventos vencidos
+  O->>C: POST /api/sync/events con token y UUID tenant/instalación
+  C->>C: Valida bearer, restaurante e instalación configurados
+  C->>R: Inserta evento + hash + payload, clave (restaurante, evento)
+  alt evento nuevo o repetido idéntico
+    R-->>C: aceptado o ya recibido
+    C-->>O: ACEPTADO / DUPLICADO
+    O->>L: Marca SINCRONIZADO
+  else UUID repetido con carga distinta
+    C-->>O: HTTP 409
+    O->>L: Marca CONFLICTO
+  else error transitorio
+    C-->>O: error o sin conexión
+    O->>L: Incrementa intento y programa backoff
+  end
+  Note over C,R: Se conserva Inbox. La proyección central de pedidos está pendiente.

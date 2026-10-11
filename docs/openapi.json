@@ -1,0 +1,1792 @@
+﻿{
+    "openapi":  "3.1.0",
+    "info":  {
+                 "title":  "OpenAPI definition",
+                 "version":  "v0"
+             },
+    "servers":  [
+                    {
+                        "url":  "http://localhost:8080",
+                        "description":  "Generated server url"
+                    }
+                ],
+    "paths":  {
+                  "/api/tables/{id}":  {
+                                           "put":  {
+                                                       "tags":  [
+                                                                    "administration-controller"
+                                                                ],
+                                                       "operationId":  "editTable",
+                                                       "parameters":  [
+                                                                          {
+                                                                              "name":  "id",
+                                                                              "in":  "path",
+                                                                              "required":  true,
+                                                                              "schema":  {
+                                                                                             "type":  "string",
+                                                                                             "format":  "uuid"
+                                                                                         }
+                                                                          }
+                                                                      ],
+                                                       "requestBody":  {
+                                                                           "content":  {
+                                                                                           "application/json":  {
+                                                                                                                    "schema":  {
+                                                                                                                                   "$ref":  "#/components/schemas/TableEdit"
+                                                                                                                               }
+                                                                                                                }
+                                                                                       },
+                                                                           "required":  true
+                                                                       },
+                                                       "responses":  {
+                                                                         "200":  {
+                                                                                     "description":  "OK",
+                                                                                     "content":  {
+                                                                                                     "*/*":  {
+                                                                                                                 "schema":  {
+                                                                                                                                "type":  "object"
+                                                                                                                            }
+                                                                                                             }
+                                                                                                 }
+                                                                                 }
+                                                                     }
+                                                   },
+                                           "delete":  {
+                                                          "tags":  [
+                                                                       "operational-controller"
+                                                                   ],
+                                                          "operationId":  "deleteTable",
+                                                          "parameters":  [
+                                                                             {
+                                                                                 "name":  "id",
+                                                                                 "in":  "path",
+                                                                                 "required":  true,
+                                                                                 "schema":  {
+                                                                                                "type":  "string",
+                                                                                                "format":  "uuid"
+                                                                                            }
+                                                                             }
+                                                                         ],
+                                                          "responses":  {
+                                                                            "200":  {
+                                                                                        "description":  "OK",
+                                                                                        "content":  {
+                                                                                                        "*/*":  {
+                                                                                                                    "schema":  {
+                                                                                                                                   "type":  "object"
+                                                                                                                               }
+                                                                                                                }
+                                                                                                    }
+                                                                                    }
+                                                                        }
+                                                      },
+                                           "patch":  {
+                                                         "tags":  [
+                                                                      "operational-controller"
+                                                                  ],
+                                                         "operationId":  "updateTable",
+                                                         "parameters":  [
+                                                                            {
+                                                                                "name":  "id",
+                                                                                "in":  "path",
+                                                                                "required":  true,
+                                                                                "schema":  {
+                                                                                               "type":  "string",
+                                                                                               "format":  "uuid"
+                                                                                           }
+                                                                            }
+                                                                        ],
+                                                         "requestBody":  {
+                                                                             "content":  {
+                                                                                             "application/json":  {
+                                                                                                                      "schema":  {
+                                                                                                                                     "$ref":  "#/components/schemas/TableUpdate"
+                                                                                                                                 }
+                                                                                                                  }
+                                                                                         },
+                                                                             "required":  true
+                                                                         },
+                                                         "responses":  {
+                                                                           "200":  {
+                                                                                       "description":  "OK",
+                                                                                       "content":  {
+                                                                                                       "*/*":  {
+                                                                                                                   "schema":  {
+                                                                                                                                  "type":  "object"
+                                                                                                                              }
+                                                                                                               }
+                                                                                                   }
+                                                                                   }
+                                                                       }
+                                                     }
+                                       },
+                  "/api/products/{id}":  {
+                                             "put":  {
+                                                         "tags":  [
+                                                                      "administration-controller"
+                                                                  ],
+                                                         "operationId":  "editProduct",
+                                                         "parameters":  [
+                                                                            {
+                                                                                "name":  "id",
+                                                                                "in":  "path",
+                                                                                "required":  true,
+                                                                                "schema":  {
+                                                                                               "type":  "string",
+                                                                                               "format":  "uuid"
+                                                                                           }
+                                                                            }
+                                                                        ],
+                                                         "requestBody":  {
+                                                                             "content":  {
+                                                                                             "application/json":  {
+                                                                                                                      "schema":  {
+                                                                                                                                     "$ref":  "#/components/schemas/ProductEdit"
+                                                                                                                                 }
+                                                                                                                  }
+                                                                                         },
+                                                                             "required":  true
+                                                                         },
+                                                         "responses":  {
+                                                                           "200":  {
+                                                                                       "description":  "OK",
+                                                                                       "content":  {
+                                                                                                       "*/*":  {
+                                                                                                                   "schema":  {
+                                                                                                                                  "type":  "object"
+                                                                                                                              }
+                                                                                                               }
+                                                                                                   }
+                                                                                   }
+                                                                       }
+                                                     },
+                                             "delete":  {
+                                                            "tags":  [
+                                                                         "administration-controller"
+                                                                     ],
+                                                            "operationId":  "deactivateProduct",
+                                                            "parameters":  [
+                                                                               {
+                                                                                   "name":  "id",
+                                                                                   "in":  "path",
+                                                                                   "required":  true,
+                                                                                   "schema":  {
+                                                                                                  "type":  "string",
+                                                                                                  "format":  "uuid"
+                                                                                              }
+                                                                               }
+                                                                           ],
+                                                            "responses":  {
+                                                                              "200":  {
+                                                                                          "description":  "OK",
+                                                                                          "content":  {
+                                                                                                          "*/*":  {
+                                                                                                                      "schema":  {
+                                                                                                                                     "type":  "object"
+                                                                                                                                 }
+                                                                                                                  }
+                                                                                                      }
+                                                                                      }
+                                                                          }
+                                                        },
+                                             "patch":  {
+                                                           "tags":  [
+                                                                        "operational-controller"
+                                                                    ],
+                                                           "operationId":  "updateProduct",
+                                                           "parameters":  [
+                                                                              {
+                                                                                  "name":  "id",
+                                                                                  "in":  "path",
+                                                                                  "required":  true,
+                                                                                  "schema":  {
+                                                                                                 "type":  "string",
+                                                                                                 "format":  "uuid"
+                                                                                             }
+                                                                              }
+                                                                          ],
+                                                           "requestBody":  {
+                                                                               "content":  {
+                                                                                               "application/json":  {
+                                                                                                                        "schema":  {
+                                                                                                                                       "$ref":  "#/components/schemas/ProductInput"
+                                                                                                                                   }
+                                                                                                                    }
+                                                                                           },
+                                                                               "required":  true
+                                                                           },
+                                                           "responses":  {
+                                                                             "200":  {
+                                                                                         "description":  "OK",
+                                                                                         "content":  {
+                                                                                                         "*/*":  {
+                                                                                                                     "schema":  {
+                                                                                                                                    "type":  "object"
+                                                                                                                                }
+                                                                                                                 }
+                                                                                                     }
+                                                                                     }
+                                                                         }
+                                                       }
+                                         },
+                  "/api/tables":  {
+                                      "get":  {
+                                                  "tags":  [
+                                                               "operational-controller"
+                                                           ],
+                                                  "operationId":  "tables",
+                                                  "responses":  {
+                                                                    "200":  {
+                                                                                "description":  "OK",
+                                                                                "content":  {
+                                                                                                "*/*":  {
+                                                                                                            "schema":  {
+                                                                                                                           "type":  "object"
+                                                                                                                       }
+                                                                                                        }
+                                                                                            }
+                                                                            }
+                                                                }
+                                              },
+                                      "post":  {
+                                                   "tags":  [
+                                                                "operational-controller"
+                                                            ],
+                                                   "operationId":  "createTable",
+                                                   "requestBody":  {
+                                                                       "content":  {
+                                                                                       "application/json":  {
+                                                                                                                "schema":  {
+                                                                                                                               "$ref":  "#/components/schemas/TableInput"
+                                                                                                                           }
+                                                                                                            }
+                                                                                   },
+                                                                       "required":  true
+                                                                   },
+                                                   "responses":  {
+                                                                     "200":  {
+                                                                                 "description":  "OK",
+                                                                                 "content":  {
+                                                                                                 "*/*":  {
+                                                                                                             "schema":  {
+                                                                                                                            "type":  "object"
+                                                                                                                        }
+                                                                                                         }
+                                                                                             }
+                                                                             }
+                                                                 }
+                                               }
+                                  },
+                  "/api/products":  {
+                                        "get":  {
+                                                    "tags":  [
+                                                                 "operational-controller"
+                                                             ],
+                                                    "operationId":  "products",
+                                                    "responses":  {
+                                                                      "200":  {
+                                                                                  "description":  "OK",
+                                                                                  "content":  {
+                                                                                                  "*/*":  {
+                                                                                                              "schema":  {
+                                                                                                                             "type":  "object"
+                                                                                                                         }
+                                                                                                          }
+                                                                                              }
+                                                                              }
+                                                                  }
+                                                },
+                                        "post":  {
+                                                     "tags":  [
+                                                                  "operational-controller"
+                                                              ],
+                                                     "operationId":  "createProduct",
+                                                     "requestBody":  {
+                                                                         "content":  {
+                                                                                         "application/json":  {
+                                                                                                                  "schema":  {
+                                                                                                                                 "$ref":  "#/components/schemas/ProductInput"
+                                                                                                                             }
+                                                                                                              }
+                                                                                     },
+                                                                         "required":  true
+                                                                     },
+                                                     "responses":  {
+                                                                       "200":  {
+                                                                                   "description":  "OK",
+                                                                                   "content":  {
+                                                                                                   "*/*":  {
+                                                                                                               "schema":  {
+                                                                                                                              "type":  "object"
+                                                                                                                          }
+                                                                                                           }
+                                                                                               }
+                                                                               }
+                                                                   }
+                                                 }
+                                    },
+                  "/api/printer/stations":  {
+                                                "get":  {
+                                                            "tags":  [
+                                                                         "printer-controller"
+                                                                     ],
+                                                            "operationId":  "stations",
+                                                            "responses":  {
+                                                                              "200":  {
+                                                                                          "description":  "OK",
+                                                                                          "content":  {
+                                                                                                          "*/*":  {
+                                                                                                                      "schema":  {
+                                                                                                                                     "type":  "object"
+                                                                                                                                 }
+                                                                                                                  }
+                                                                                                      }
+                                                                                      }
+                                                                          }
+                                                        },
+                                                "post":  {
+                                                             "tags":  [
+                                                                          "printer-controller"
+                                                                      ],
+                                                             "operationId":  "createStation",
+                                                             "requestBody":  {
+                                                                                 "content":  {
+                                                                                                 "application/json":  {
+                                                                                                                          "schema":  {
+                                                                                                                                         "$ref":  "#/components/schemas/Station"
+                                                                                                                                     }
+                                                                                                                      }
+                                                                                             },
+                                                                                 "required":  true
+                                                                             },
+                                                             "responses":  {
+                                                                               "200":  {
+                                                                                           "description":  "OK",
+                                                                                           "content":  {
+                                                                                                           "*/*":  {
+                                                                                                                       "schema":  {
+                                                                                                                                      "type":  "object"
+                                                                                                                                  }
+                                                                                                                   }
+                                                                                                       }
+                                                                                       }
+                                                                           }
+                                                         }
+                                            },
+                  "/api/printer/jobs/{id}/retry":  {
+                                                       "post":  {
+                                                                    "tags":  [
+                                                                                 "printer-controller"
+                                                                             ],
+                                                                    "operationId":  "retry",
+                                                                    "parameters":  [
+                                                                                       {
+                                                                                           "name":  "id",
+                                                                                           "in":  "path",
+                                                                                           "required":  true,
+                                                                                           "schema":  {
+                                                                                                          "type":  "string",
+                                                                                                          "format":  "uuid"
+                                                                                                      }
+                                                                                       }
+                                                                                   ],
+                                                                    "responses":  {
+                                                                                      "200":  {
+                                                                                                  "description":  "OK",
+                                                                                                  "content":  {
+                                                                                                                  "*/*":  {
+                                                                                                                              "schema":  {
+                                                                                                                                             "type":  "object"
+                                                                                                                                         }
+                                                                                                                          }
+                                                                                                              }
+                                                                                              }
+                                                                                  }
+                                                                }
+                                                   },
+                  "/api/printer/jobs/{id}/result":  {
+                                                        "post":  {
+                                                                     "tags":  [
+                                                                                  "printer-controller"
+                                                                              ],
+                                                                     "operationId":  "result",
+                                                                     "parameters":  [
+                                                                                        {
+                                                                                            "name":  "id",
+                                                                                            "in":  "path",
+                                                                                            "required":  true,
+                                                                                            "schema":  {
+                                                                                                           "type":  "string",
+                                                                                                           "format":  "uuid"
+                                                                                                       }
+                                                                                        },
+                                                                                        {
+                                                                                            "name":  "Authorization",
+                                                                                            "in":  "header",
+                                                                                            "required":  false,
+                                                                                            "schema":  {
+                                                                                                           "type":  "string"
+                                                                                                       }
+                                                                                        }
+                                                                                    ],
+                                                                     "requestBody":  {
+                                                                                         "content":  {
+                                                                                                         "application/json":  {
+                                                                                                                                  "schema":  {
+                                                                                                                                                 "$ref":  "#/components/schemas/Result"
+                                                                                                                                             }
+                                                                                                                              }
+                                                                                                     },
+                                                                                         "required":  true
+                                                                                     },
+                                                                     "responses":  {
+                                                                                       "200":  {
+                                                                                                   "description":  "OK",
+                                                                                                   "content":  {
+                                                                                                                   "*/*":  {
+                                                                                                                               "schema":  {
+                                                                                                                                              "type":  "object"
+                                                                                                                                          }
+                                                                                                                           }
+                                                                                                               }
+                                                                                               }
+                                                                                   }
+                                                                 }
+                                                    },
+                  "/api/printer/jobs/claim":  {
+                                                  "post":  {
+                                                               "tags":  [
+                                                                            "printer-controller"
+                                                                        ],
+                                                               "operationId":  "claim",
+                                                               "parameters":  [
+                                                                                  {
+                                                                                      "name":  "Authorization",
+                                                                                      "in":  "header",
+                                                                                      "required":  false,
+                                                                                      "schema":  {
+                                                                                                     "type":  "string"
+                                                                                                 }
+                                                                                  }
+                                                                              ],
+                                                               "responses":  {
+                                                                                 "200":  {
+                                                                                             "description":  "OK",
+                                                                                             "content":  {
+                                                                                                             "*/*":  {
+                                                                                                                         "schema":  {
+                                                                                                                                        "type":  "object"
+                                                                                                                                    }
+                                                                                                                     }
+                                                                                                         }
+                                                                                         }
+                                                                             }
+                                                           }
+                                              },
+                  "/api/printer/devices":  {
+                                               "get":  {
+                                                           "tags":  [
+                                                                        "printer-controller"
+                                                                    ],
+                                                           "operationId":  "devices",
+                                                           "responses":  {
+                                                                             "200":  {
+                                                                                         "description":  "OK",
+                                                                                         "content":  {
+                                                                                                         "*/*":  {
+                                                                                                                     "schema":  {
+                                                                                                                                    "type":  "object"
+                                                                                                                                }
+                                                                                                                 }
+                                                                                                     }
+                                                                                     }
+                                                                         }
+                                                       },
+                                               "post":  {
+                                                            "tags":  [
+                                                                         "printer-controller"
+                                                                     ],
+                                                            "operationId":  "createDevice",
+                                                            "requestBody":  {
+                                                                                "content":  {
+                                                                                                "application/json":  {
+                                                                                                                         "schema":  {
+                                                                                                                                        "$ref":  "#/components/schemas/Device"
+                                                                                                                                    }
+                                                                                                                     }
+                                                                                            },
+                                                                                "required":  true
+                                                                            },
+                                                            "responses":  {
+                                                                              "200":  {
+                                                                                          "description":  "OK",
+                                                                                          "content":  {
+                                                                                                          "*/*":  {
+                                                                                                                      "schema":  {
+                                                                                                                                     "type":  "object"
+                                                                                                                                 }
+                                                                                                                  }
+                                                                                                      }
+                                                                                      }
+                                                                          }
+                                                        }
+                                           },
+                  "/api/orders":  {
+                                      "get":  {
+                                                  "tags":  [
+                                                               "operational-controller"
+                                                           ],
+                                                  "operationId":  "orders",
+                                                  "parameters":  [
+                                                                     {
+                                                                         "name":  "estado",
+                                                                         "in":  "query",
+                                                                         "required":  false,
+                                                                         "schema":  {
+                                                                                        "type":  "string"
+                                                                                    }
+                                                                     }
+                                                                 ],
+                                                  "responses":  {
+                                                                    "200":  {
+                                                                                "description":  "OK",
+                                                                                "content":  {
+                                                                                                "*/*":  {
+                                                                                                            "schema":  {
+                                                                                                                           "type":  "object"
+                                                                                                                       }
+                                                                                                        }
+                                                                                            }
+                                                                            }
+                                                                }
+                                              },
+                                      "post":  {
+                                                   "tags":  [
+                                                                "operational-controller"
+                                                            ],
+                                                   "operationId":  "createOrder",
+                                                   "parameters":  [
+                                                                      {
+                                                                          "name":  "Idempotency-Key",
+                                                                          "in":  "header",
+                                                                          "required":  false,
+                                                                          "schema":  {
+                                                                                         "type":  "string"
+                                                                                     }
+                                                                      }
+                                                                  ],
+                                                   "requestBody":  {
+                                                                       "content":  {
+                                                                                       "application/json":  {
+                                                                                                                "schema":  {
+                                                                                                                               "$ref":  "#/components/schemas/OrderInput"
+                                                                                                                           }
+                                                                                                            }
+                                                                                   },
+                                                                       "required":  true
+                                                                   },
+                                                   "responses":  {
+                                                                     "200":  {
+                                                                                 "description":  "OK",
+                                                                                 "content":  {
+                                                                                                 "*/*":  {
+                                                                                                             "schema":  {
+                                                                                                                            "type":  "object"
+                                                                                                                        }
+                                                                                                         }
+                                                                                             }
+                                                                             }
+                                                                 }
+                                               }
+                                  },
+                  "/api/orders/{id}/state":  {
+                                                 "post":  {
+                                                              "tags":  [
+                                                                           "operational-controller"
+                                                                       ],
+                                                              "operationId":  "changeState",
+                                                              "parameters":  [
+                                                                                 {
+                                                                                     "name":  "id",
+                                                                                     "in":  "path",
+                                                                                     "required":  true,
+                                                                                     "schema":  {
+                                                                                                    "type":  "string",
+                                                                                                    "format":  "uuid"
+                                                                                                }
+                                                                                 }
+                                                                             ],
+                                                              "requestBody":  {
+                                                                                  "content":  {
+                                                                                                  "application/json":  {
+                                                                                                                           "schema":  {
+                                                                                                                                          "$ref":  "#/components/schemas/StateInput"
+                                                                                                                                      }
+                                                                                                                       }
+                                                                                              },
+                                                                                  "required":  true
+                                                                              },
+                                                              "responses":  {
+                                                                                "200":  {
+                                                                                            "description":  "OK",
+                                                                                            "content":  {
+                                                                                                            "*/*":  {
+                                                                                                                        "schema":  {
+                                                                                                                                       "type":  "object"
+                                                                                                                                   }
+                                                                                                                    }
+                                                                                                        }
+                                                                                        }
+                                                                            }
+                                                          }
+                                             },
+                  "/api/orders/{id}/assignment":  {
+                                                      "post":  {
+                                                                   "tags":  [
+                                                                                "operational-controller"
+                                                                            ],
+                                                                   "operationId":  "assignDelivery",
+                                                                   "parameters":  [
+                                                                                      {
+                                                                                          "name":  "id",
+                                                                                          "in":  "path",
+                                                                                          "required":  true,
+                                                                                          "schema":  {
+                                                                                                         "type":  "string",
+                                                                                                         "format":  "uuid"
+                                                                                                     }
+                                                                                      }
+                                                                                  ],
+                                                                   "requestBody":  {
+                                                                                       "content":  {
+                                                                                                       "application/json":  {
+                                                                                                                                "schema":  {
+                                                                                                                                               "$ref":  "#/components/schemas/AssignmentInput"
+                                                                                                                                           }
+                                                                                                                            }
+                                                                                                   },
+                                                                                       "required":  true
+                                                                                   },
+                                                                   "responses":  {
+                                                                                     "200":  {
+                                                                                                 "description":  "OK",
+                                                                                                 "content":  {
+                                                                                                                 "*/*":  {
+                                                                                                                             "schema":  {
+                                                                                                                                            "type":  "object"
+                                                                                                                                        }
+                                                                                                                         }
+                                                                                                             }
+                                                                                             }
+                                                                                 }
+                                                               }
+                                                  },
+                  "/api/categories":  {
+                                          "get":  {
+                                                      "tags":  [
+                                                                   "operational-controller"
+                                                               ],
+                                                      "operationId":  "categories",
+                                                      "responses":  {
+                                                                        "200":  {
+                                                                                    "description":  "OK",
+                                                                                    "content":  {
+                                                                                                    "*/*":  {
+                                                                                                                "schema":  {
+                                                                                                                               "type":  "object"
+                                                                                                                           }
+                                                                                                            }
+                                                                                                }
+                                                                                }
+                                                                    }
+                                                  },
+                                          "post":  {
+                                                       "tags":  [
+                                                                    "operational-controller"
+                                                                ],
+                                                       "operationId":  "createCategory",
+                                                       "requestBody":  {
+                                                                           "content":  {
+                                                                                           "application/json":  {
+                                                                                                                    "schema":  {
+                                                                                                                                   "$ref":  "#/components/schemas/CategoryInput"
+                                                                                                                               }
+                                                                                                                }
+                                                                                       },
+                                                                           "required":  true
+                                                                       },
+                                                       "responses":  {
+                                                                         "200":  {
+                                                                                     "description":  "OK",
+                                                                                     "content":  {
+                                                                                                     "*/*":  {
+                                                                                                                 "schema":  {
+                                                                                                                                "type":  "object"
+                                                                                                                            }
+                                                                                                             }
+                                                                                                 }
+                                                                                 }
+                                                                     }
+                                                   }
+                                      },
+                  "/api/auth/logout":  {
+                                           "post":  {
+                                                        "tags":  [
+                                                                     "auth-controller"
+                                                                 ],
+                                                        "operationId":  "logout",
+                                                        "responses":  {
+                                                                          "200":  {
+                                                                                      "description":  "OK",
+                                                                                      "content":  {
+                                                                                                      "*/*":  {
+                                                                                                                  "schema":  {
+                                                                                                                                 "type":  "object"
+                                                                                                                             }
+                                                                                                              }
+                                                                                                  }
+                                                                                  }
+                                                                      }
+                                                    }
+                                       },
+                  "/api/auth/login":  {
+                                          "post":  {
+                                                       "tags":  [
+                                                                    "auth-controller"
+                                                                ],
+                                                       "operationId":  "login",
+                                                       "requestBody":  {
+                                                                           "content":  {
+                                                                                           "application/json":  {
+                                                                                                                    "schema":  {
+                                                                                                                                   "$ref":  "#/components/schemas/Login"
+                                                                                                                               }
+                                                                                                                }
+                                                                                       },
+                                                                           "required":  true
+                                                                       },
+                                                       "responses":  {
+                                                                         "200":  {
+                                                                                     "description":  "OK",
+                                                                                     "content":  {
+                                                                                                     "*/*":  {
+                                                                                                                 "schema":  {
+                                                                                                                                "type":  "object"
+                                                                                                                            }
+                                                                                                             }
+                                                                                                 }
+                                                                                 }
+                                                                     }
+                                                   }
+                                      },
+                  "/api/auth/employees":  {
+                                              "get":  {
+                                                          "tags":  [
+                                                                       "auth-controller"
+                                                                   ],
+                                                          "operationId":  "employees",
+                                                          "parameters":  [
+                                                                             {
+                                                                                 "name":  "incluirInactivos",
+                                                                                 "in":  "query",
+                                                                                 "required":  false,
+                                                                                 "schema":  {
+                                                                                                "type":  "boolean",
+                                                                                                "default":  false
+                                                                                            }
+                                                                             }
+                                                                         ],
+                                                          "responses":  {
+                                                                            "200":  {
+                                                                                        "description":  "OK",
+                                                                                        "content":  {
+                                                                                                        "*/*":  {
+                                                                                                                    "schema":  {
+                                                                                                                                   "type":  "object"
+                                                                                                                               }
+                                                                                                                }
+                                                                                                    }
+                                                                                    }
+                                                                        }
+                                                      },
+                                              "post":  {
+                                                           "tags":  [
+                                                                        "auth-controller"
+                                                                    ],
+                                                           "operationId":  "createEmployee",
+                                                           "requestBody":  {
+                                                                               "content":  {
+                                                                                               "application/json":  {
+                                                                                                                        "schema":  {
+                                                                                                                                       "$ref":  "#/components/schemas/EmployeeInput"
+                                                                                                                                   }
+                                                                                                                    }
+                                                                                           },
+                                                                               "required":  true
+                                                                           },
+                                                           "responses":  {
+                                                                             "200":  {
+                                                                                         "description":  "OK",
+                                                                                         "content":  {
+                                                                                                         "*/*":  {
+                                                                                                                     "schema":  {
+                                                                                                                                    "type":  "object"
+                                                                                                                                }
+                                                                                                                 }
+                                                                                                     }
+                                                                                     }
+                                                                         }
+                                                       }
+                                          },
+                  "/api/auth/employees/{id}/pin":  {
+                                                       "post":  {
+                                                                    "tags":  [
+                                                                                 "administration-controller"
+                                                                             ],
+                                                                    "operationId":  "resetEmployeePin",
+                                                                    "parameters":  [
+                                                                                       {
+                                                                                           "name":  "id",
+                                                                                           "in":  "path",
+                                                                                           "required":  true,
+                                                                                           "schema":  {
+                                                                                                          "type":  "string",
+                                                                                                          "format":  "uuid"
+                                                                                                      }
+                                                                                       }
+                                                                                   ],
+                                                                    "requestBody":  {
+                                                                                        "content":  {
+                                                                                                        "application/json":  {
+                                                                                                                                 "schema":  {
+                                                                                                                                                "$ref":  "#/components/schemas/Pin"
+                                                                                                                                            }
+                                                                                                                             }
+                                                                                                    },
+                                                                                        "required":  true
+                                                                                    },
+                                                                    "responses":  {
+                                                                                      "200":  {
+                                                                                                  "description":  "OK",
+                                                                                                  "content":  {
+                                                                                                                  "*/*":  {
+                                                                                                                              "schema":  {
+                                                                                                                                             "type":  "object"
+                                                                                                                                         }
+                                                                                                                          }
+                                                                                                              }
+                                                                                              }
+                                                                                  }
+                                                                }
+                                                   },
+                  "/api/auth/change-pin":  {
+                                               "post":  {
+                                                            "tags":  [
+                                                                         "auth-controller"
+                                                                     ],
+                                                            "operationId":  "changeOwnPin",
+                                                            "requestBody":  {
+                                                                                "content":  {
+                                                                                                "application/json":  {
+                                                                                                                         "schema":  {
+                                                                                                                                        "$ref":  "#/components/schemas/ChangePin"
+                                                                                                                                    }
+                                                                                                                     }
+                                                                                            },
+                                                                                "required":  true
+                                                                            },
+                                                            "responses":  {
+                                                                              "200":  {
+                                                                                          "description":  "OK",
+                                                                                          "content":  {
+                                                                                                          "*/*":  {
+                                                                                                                      "schema":  {
+                                                                                                                                     "type":  "object"
+                                                                                                                                 }
+                                                                                                                  }
+                                                                                                      }
+                                                                                      }
+                                                                          }
+                                                        }
+                                           },
+                  "/api/printer/stations/{id}":  {
+                                                     "patch":  {
+                                                                   "tags":  [
+                                                                                "printer-controller"
+                                                                            ],
+                                                                   "operationId":  "updateStation",
+                                                                   "parameters":  [
+                                                                                      {
+                                                                                          "name":  "id",
+                                                                                          "in":  "path",
+                                                                                          "required":  true,
+                                                                                          "schema":  {
+                                                                                                         "type":  "string",
+                                                                                                         "format":  "uuid"
+                                                                                                     }
+                                                                                      }
+                                                                                  ],
+                                                                   "requestBody":  {
+                                                                                       "content":  {
+                                                                                                       "application/json":  {
+                                                                                                                                "schema":  {
+                                                                                                                                               "$ref":  "#/components/schemas/StationUpdate"
+                                                                                                                                           }
+                                                                                                                            }
+                                                                                                   },
+                                                                                       "required":  true
+                                                                                   },
+                                                                   "responses":  {
+                                                                                     "200":  {
+                                                                                                 "description":  "OK",
+                                                                                                 "content":  {
+                                                                                                                 "*/*":  {
+                                                                                                                             "schema":  {
+                                                                                                                                            "type":  "object"
+                                                                                                                                        }
+                                                                                                                         }
+                                                                                                             }
+                                                                                             }
+                                                                                 }
+                                                               }
+                                                 },
+                  "/api/printer/devices/{id}":  {
+                                                    "patch":  {
+                                                                  "tags":  [
+                                                                               "printer-controller"
+                                                                           ],
+                                                                  "operationId":  "updateDevice",
+                                                                  "parameters":  [
+                                                                                     {
+                                                                                         "name":  "id",
+                                                                                         "in":  "path",
+                                                                                         "required":  true,
+                                                                                         "schema":  {
+                                                                                                        "type":  "string",
+                                                                                                        "format":  "uuid"
+                                                                                                    }
+                                                                                     }
+                                                                                 ],
+                                                                  "requestBody":  {
+                                                                                      "content":  {
+                                                                                                      "application/json":  {
+                                                                                                                               "schema":  {
+                                                                                                                                              "$ref":  "#/components/schemas/DeviceUpdate"
+                                                                                                                                          }
+                                                                                                                           }
+                                                                                                  },
+                                                                                      "required":  true
+                                                                                  },
+                                                                  "responses":  {
+                                                                                    "200":  {
+                                                                                                "description":  "OK",
+                                                                                                "content":  {
+                                                                                                                "*/*":  {
+                                                                                                                            "schema":  {
+                                                                                                                                           "type":  "object"
+                                                                                                                                       }
+                                                                                                                        }
+                                                                                                            }
+                                                                                            }
+                                                                                }
+                                                              }
+                                                },
+                  "/api/categories/{id}":  {
+                                               "patch":  {
+                                                             "tags":  [
+                                                                          "administration-controller"
+                                                                      ],
+                                                             "operationId":  "editCategory",
+                                                             "parameters":  [
+                                                                                {
+                                                                                    "name":  "id",
+                                                                                    "in":  "path",
+                                                                                    "required":  true,
+                                                                                    "schema":  {
+                                                                                                   "type":  "string",
+                                                                                                   "format":  "uuid"
+                                                                                               }
+                                                                                }
+                                                                            ],
+                                                             "requestBody":  {
+                                                                                 "content":  {
+                                                                                                 "application/json":  {
+                                                                                                                          "schema":  {
+                                                                                                                                         "$ref":  "#/components/schemas/CategoryEdit"
+                                                                                                                                     }
+                                                                                                                      }
+                                                                                             },
+                                                                                 "required":  true
+                                                                             },
+                                                             "responses":  {
+                                                                               "200":  {
+                                                                                           "description":  "OK",
+                                                                                           "content":  {
+                                                                                                           "*/*":  {
+                                                                                                                       "schema":  {
+                                                                                                                                      "type":  "object"
+                                                                                                                                  }
+                                                                                                                   }
+                                                                                                       }
+                                                                                       }
+                                                                           }
+                                                         }
+                                           },
+                  "/api/auth/employees/{id}":  {
+                                                   "patch":  {
+                                                                 "tags":  [
+                                                                              "administration-controller"
+                                                                          ],
+                                                                 "operationId":  "editEmployee",
+                                                                 "parameters":  [
+                                                                                    {
+                                                                                        "name":  "id",
+                                                                                        "in":  "path",
+                                                                                        "required":  true,
+                                                                                        "schema":  {
+                                                                                                       "type":  "string",
+                                                                                                       "format":  "uuid"
+                                                                                                   }
+                                                                                    }
+                                                                                ],
+                                                                 "requestBody":  {
+                                                                                     "content":  {
+                                                                                                     "application/json":  {
+                                                                                                                              "schema":  {
+                                                                                                                                             "$ref":  "#/components/schemas/EmployeeEdit"
+                                                                                                                                         }
+                                                                                                                          }
+                                                                                                 },
+                                                                                     "required":  true
+                                                                                 },
+                                                                 "responses":  {
+                                                                                   "200":  {
+                                                                                               "description":  "OK",
+                                                                                               "content":  {
+                                                                                                               "*/*":  {
+                                                                                                                           "schema":  {
+                                                                                                                                          "type":  "object"
+                                                                                                                                      }
+                                                                                                                       }
+                                                                                                           }
+                                                                                           }
+                                                                               }
+                                                             }
+                                               },
+                  "/api/sync/status":  {
+                                           "get":  {
+                                                       "tags":  [
+                                                                    "operational-controller"
+                                                                ],
+                                                       "operationId":  "syncStatus",
+                                                       "responses":  {
+                                                                         "200":  {
+                                                                                     "description":  "OK",
+                                                                                     "content":  {
+                                                                                                     "*/*":  {
+                                                                                                                 "schema":  {
+                                                                                                                                "type":  "object"
+                                                                                                                            }
+                                                                                                             }
+                                                                                                 }
+                                                                                 }
+                                                                     }
+                                                   }
+                                       },
+                  "/api/printer/jobs":  {
+                                            "get":  {
+                                                        "tags":  [
+                                                                     "printer-controller"
+                                                                 ],
+                                                        "operationId":  "pending",
+                                                        "parameters":  [
+                                                                           {
+                                                                               "name":  "Authorization",
+                                                                               "in":  "header",
+                                                                               "required":  false,
+                                                                               "schema":  {
+                                                                                              "type":  "string"
+                                                                                          }
+                                                                           }
+                                                                       ],
+                                                        "responses":  {
+                                                                          "200":  {
+                                                                                      "description":  "OK",
+                                                                                      "content":  {
+                                                                                                      "*/*":  {
+                                                                                                                  "schema":  {
+                                                                                                                                 "type":  "object"
+                                                                                                                             }
+                                                                                                              }
+                                                                                                  }
+                                                                                  }
+                                                                      }
+                                                    }
+                                        },
+                  "/api/printer/admin/jobs":  {
+                                                  "get":  {
+                                                              "tags":  [
+                                                                           "printer-controller"
+                                                                       ],
+                                                              "operationId":  "adminJobs",
+                                                              "responses":  {
+                                                                                "200":  {
+                                                                                            "description":  "OK",
+                                                                                            "content":  {
+                                                                                                            "*/*":  {
+                                                                                                                        "schema":  {
+                                                                                                                                       "type":  "object"
+                                                                                                                                   }
+                                                                                                                    }
+                                                                                                        }
+                                                                                        }
+                                                                            }
+                                                          }
+                                              },
+                  "/api/orders/{id}":  {
+                                           "get":  {
+                                                       "tags":  [
+                                                                    "operational-controller"
+                                                                ],
+                                                       "operationId":  "getOrder",
+                                                       "parameters":  [
+                                                                          {
+                                                                              "name":  "id",
+                                                                              "in":  "path",
+                                                                              "required":  true,
+                                                                              "schema":  {
+                                                                                             "type":  "string",
+                                                                                             "format":  "uuid"
+                                                                                         }
+                                                                          }
+                                                                      ],
+                                                       "responses":  {
+                                                                         "200":  {
+                                                                                     "description":  "OK",
+                                                                                     "content":  {
+                                                                                                     "*/*":  {
+                                                                                                                 "schema":  {
+                                                                                                                                "type":  "object"
+                                                                                                                            }
+                                                                                                             }
+                                                                                                 }
+                                                                                 }
+                                                                     }
+                                                   }
+                                       },
+                  "/api/orders/{id}/history":  {
+                                                   "get":  {
+                                                               "tags":  [
+                                                                            "administration-controller"
+                                                                        ],
+                                                               "operationId":  "orderHistory",
+                                                               "parameters":  [
+                                                                                  {
+                                                                                      "name":  "id",
+                                                                                      "in":  "path",
+                                                                                      "required":  true,
+                                                                                      "schema":  {
+                                                                                                     "type":  "string",
+                                                                                                     "format":  "uuid"
+                                                                                                 }
+                                                                                  }
+                                                                              ],
+                                                               "responses":  {
+                                                                                 "200":  {
+                                                                                             "description":  "OK",
+                                                                                             "content":  {
+                                                                                                             "*/*":  {
+                                                                                                                         "schema":  {
+                                                                                                                                        "type":  "object"
+                                                                                                                                    }
+                                                                                                                     }
+                                                                                                         }
+                                                                                         }
+                                                                             }
+                                                           }
+                                               },
+                  "/api/orders/{id}/assignments":  {
+                                                       "get":  {
+                                                                   "tags":  [
+                                                                                "administration-controller"
+                                                                            ],
+                                                                   "operationId":  "deliveryHistory",
+                                                                   "parameters":  [
+                                                                                      {
+                                                                                          "name":  "id",
+                                                                                          "in":  "path",
+                                                                                          "required":  true,
+                                                                                          "schema":  {
+                                                                                                         "type":  "string",
+                                                                                                         "format":  "uuid"
+                                                                                                     }
+                                                                                      }
+                                                                                  ],
+                                                                   "responses":  {
+                                                                                     "200":  {
+                                                                                                 "description":  "OK",
+                                                                                                 "content":  {
+                                                                                                                 "*/*":  {
+                                                                                                                             "schema":  {
+                                                                                                                                            "type":  "object"
+                                                                                                                                        }
+                                                                                                                         }
+                                                                                                             }
+                                                                                             }
+                                                                                 }
+                                                               }
+                                                   },
+                  "/api/health":  {
+                                      "get":  {
+                                                  "tags":  [
+                                                               "operational-controller"
+                                                           ],
+                                                  "operationId":  "health",
+                                                  "responses":  {
+                                                                    "200":  {
+                                                                                "description":  "OK",
+                                                                                "content":  {
+                                                                                                "*/*":  {
+                                                                                                            "schema":  {
+                                                                                                                           "type":  "object"
+                                                                                                                       }
+                                                                                                        }
+                                                                                            }
+                                                                            }
+                                                                }
+                                              }
+                                  },
+                  "/api/auth/me":  {
+                                       "get":  {
+                                                   "tags":  [
+                                                                "auth-controller"
+                                                            ],
+                                                   "operationId":  "me",
+                                                   "responses":  {
+                                                                     "200":  {
+                                                                                 "description":  "OK",
+                                                                                 "content":  {
+                                                                                                 "*/*":  {
+                                                                                                             "schema":  {
+                                                                                                                            "type":  "object"
+                                                                                                                        }
+                                                                                                         }
+                                                                                             }
+                                                                             }
+                                                                 }
+                                               }
+                                   },
+                  "/api/auth/csrf":  {
+                                         "get":  {
+                                                     "tags":  [
+                                                                  "csrf-controller"
+                                                              ],
+                                                     "operationId":  "token",
+                                                     "parameters":  [
+                                                                        {
+                                                                            "name":  "csrfToken",
+                                                                            "in":  "query",
+                                                                            "required":  true,
+                                                                            "schema":  {
+                                                                                           "$ref":  "#/components/schemas/CsrfToken"
+                                                                                       }
+                                                                        }
+                                                                    ],
+                                                     "responses":  {
+                                                                       "200":  {
+                                                                                   "description":  "OK",
+                                                                                   "content":  {
+                                                                                                   "*/*":  {
+                                                                                                               "schema":  {
+                                                                                                                              "type":  "object",
+                                                                                                                              "additionalProperties":  {
+                                                                                                                                                           "type":  "string"
+                                                                                                                                                       }
+                                                                                                                          }
+                                                                                                           }
+                                                                                               }
+                                                                               }
+                                                                   }
+                                                 }
+                                     },
+                  "/api/audit":  {
+                                     "get":  {
+                                                 "tags":  [
+                                                              "administration-controller"
+                                                          ],
+                                                 "operationId":  "auditTrail",
+                                                 "parameters":  [
+                                                                    {
+                                                                        "name":  "page",
+                                                                        "in":  "query",
+                                                                        "required":  false,
+                                                                        "schema":  {
+                                                                                       "type":  "integer",
+                                                                                       "format":  "int32",
+                                                                                       "default":  0,
+                                                                                       "minimum":  0
+                                                                                   }
+                                                                    }
+                                                                ],
+                                                 "responses":  {
+                                                                   "200":  {
+                                                                               "description":  "OK",
+                                                                               "content":  {
+                                                                                               "*/*":  {
+                                                                                                           "schema":  {
+                                                                                                                          "type":  "object"
+                                                                                                                      }
+                                                                                                       }
+                                                                                           }
+                                                                           }
+                                                               }
+                                             }
+                                 }
+              },
+    "components":  {
+                       "schemas":  {
+                                       "TableEdit":  {
+                                                         "type":  "object",
+                                                         "properties":  {
+                                                                            "numero":  {
+                                                                                           "type":  "integer",
+                                                                                           "format":  "int32",
+                                                                                           "minimum":  1
+                                                                                       },
+                                                                            "activa":  {
+                                                                                           "type":  "boolean"
+                                                                                       }
+                                                                        }
+                                                     },
+                                       "ProductEdit":  {
+                                                           "type":  "object",
+                                                           "properties":  {
+                                                                              "categoriaId":  {
+                                                                                                  "type":  "string",
+                                                                                                  "format":  "uuid"
+                                                                                              },
+                                                                              "nombre":  {
+                                                                                             "type":  "string",
+                                                                                             "maxLength":  160,
+                                                                                             "minLength":  0
+                                                                                         },
+                                                                              "descripcion":  {
+                                                                                                  "type":  "string",
+                                                                                                  "maxLength":  500,
+                                                                                                  "minLength":  0
+                                                                                              },
+                                                                              "precio":  {
+                                                                                             "type":  "number",
+                                                                                             "minimum":  0.00
+                                                                                         },
+                                                                              "disponible":  {
+                                                                                                 "type":  "boolean"
+                                                                                             },
+                                                                              "activo":  {
+                                                                                             "type":  "boolean"
+                                                                                         }
+                                                                          },
+                                                           "required":  [
+                                                                            "categoriaId",
+                                                                            "nombre",
+                                                                            "precio"
+                                                                        ]
+                                                       },
+                                       "TableInput":  {
+                                                          "type":  "object",
+                                                          "properties":  {
+                                                                             "numero":  {
+                                                                                            "type":  "integer",
+                                                                                            "format":  "int32",
+                                                                                            "minimum":  1
+                                                                                        }
+                                                                         }
+                                                      },
+                                       "ProductInput":  {
+                                                            "type":  "object",
+                                                            "properties":  {
+                                                                               "categoriaId":  {
+                                                                                                   "type":  "string",
+                                                                                                   "format":  "uuid"
+                                                                                               },
+                                                                               "nombre":  {
+                                                                                              "type":  "string",
+                                                                                              "maxLength":  160,
+                                                                                              "minLength":  0
+                                                                                          },
+                                                                               "descripcion":  {
+                                                                                                   "type":  "string",
+                                                                                                   "maxLength":  500,
+                                                                                                   "minLength":  0
+                                                                                               },
+                                                                               "precio":  {
+                                                                                              "type":  "number",
+                                                                                              "minimum":  0.00
+                                                                                          },
+                                                                               "disponible":  {
+                                                                                                  "type":  "boolean"
+                                                                                              }
+                                                                           },
+                                                            "required":  [
+                                                                             "categoriaId",
+                                                                             "nombre",
+                                                                             "precio"
+                                                                         ]
+                                                        },
+                                       "Station":  {
+                                                       "type":  "object",
+                                                       "properties":  {
+                                                                          "codigo":  {
+                                                                                         "type":  "string",
+                                                                                         "maxLength":  100,
+                                                                                         "minLength":  0
+                                                                                     },
+                                                                          "nombre":  {
+                                                                                         "type":  "string",
+                                                                                         "maxLength":  120,
+                                                                                         "minLength":  0
+                                                                                     }
+                                                                      },
+                                                       "required":  [
+                                                                        "codigo",
+                                                                        "nombre"
+                                                                    ]
+                                                   },
+                                       "Result":  {
+                                                      "type":  "object",
+                                                      "properties":  {
+                                                                         "estado":  {
+                                                                                        "type":  "string",
+                                                                                        "minLength":  1
+                                                                                    },
+                                                                         "claimToken":  {
+                                                                                            "type":  "string",
+                                                                                            "format":  "uuid"
+                                                                                        },
+                                                                         "error":  {
+                                                                                       "type":  "string"
+                                                                                   }
+                                                                     },
+                                                      "required":  [
+                                                                       "claimToken",
+                                                                       "estado"
+                                                                   ]
+                                                  },
+                                       "Device":  {
+                                                      "type":  "object",
+                                                      "properties":  {
+                                                                         "estacionId":  {
+                                                                                            "type":  "string",
+                                                                                            "format":  "uuid"
+                                                                                        },
+                                                                         "nombre":  {
+                                                                                        "type":  "string",
+                                                                                        "maxLength":  120,
+                                                                                        "minLength":  0
+                                                                                    },
+                                                                         "fabricante":  {
+                                                                                            "type":  "string"
+                                                                                        },
+                                                                         "modelo":  {
+                                                                                        "type":  "string"
+                                                                                    },
+                                                                         "adaptador":  {
+                                                                                           "type":  "string",
+                                                                                           "minLength":  1
+                                                                                       },
+                                                                         "sistema":  {
+                                                                                         "type":  "string"
+                                                                                     }
+                                                                     },
+                                                      "required":  [
+                                                                       "adaptador",
+                                                                       "estacionId",
+                                                                       "nombre"
+                                                                   ]
+                                                  },
+                                       "OrderInput":  {
+                                                          "type":  "object",
+                                                          "properties":  {
+                                                                             "tipo":  {
+                                                                                          "type":  "string",
+                                                                                          "minLength":  1
+                                                                                      },
+                                                                             "mesaId":  {
+                                                                                            "type":  "string",
+                                                                                            "format":  "uuid"
+                                                                                        },
+                                                                             "destino":  {
+                                                                                             "type":  "string",
+                                                                                             "maxLength":  500,
+                                                                                             "minLength":  0
+                                                                                         },
+                                                                             "observaciones":  {
+                                                                                                   "type":  "string",
+                                                                                                   "maxLength":  1000,
+                                                                                                   "minLength":  0
+                                                                                               },
+                                                                             "items":  {
+                                                                                           "type":  "array",
+                                                                                           "items":  {
+                                                                                                         "$ref":  "#/components/schemas/OrderLine"
+                                                                                                     },
+                                                                                           "minItems":  1
+                                                                                       }
+                                                                         },
+                                                          "required":  [
+                                                                           "items",
+                                                                           "tipo"
+                                                                       ]
+                                                      },
+                                       "OrderLine":  {
+                                                         "type":  "object",
+                                                         "properties":  {
+                                                                            "productoId":  {
+                                                                                               "type":  "string",
+                                                                                               "format":  "uuid"
+                                                                                           },
+                                                                            "cantidad":  {
+                                                                                             "type":  "integer",
+                                                                                             "format":  "int32",
+                                                                                             "maximum":  100,
+                                                                                             "minimum":  1
+                                                                                         },
+                                                                            "observaciones":  {
+                                                                                                  "type":  "string",
+                                                                                                  "maxLength":  500,
+                                                                                                  "minLength":  0
+                                                                                              }
+                                                                        },
+                                                         "required":  [
+                                                                          "productoId"
+                                                                      ]
+                                                     },
+                                       "StateInput":  {
+                                                          "type":  "object",
+                                                          "properties":  {
+                                                                             "estado":  {
+                                                                                            "type":  "string",
+                                                                                            "minLength":  1
+                                                                                        },
+                                                                             "motivo":  {
+                                                                                            "type":  "string",
+                                                                                            "maxLength":  500,
+                                                                                            "minLength":  0
+                                                                                        }
+                                                                         },
+                                                          "required":  [
+                                                                           "estado"
+                                                                       ]
+                                                      },
+                                       "AssignmentInput":  {
+                                                               "type":  "object",
+                                                               "properties":  {
+                                                                                  "empleadoId":  {
+                                                                                                     "type":  "string",
+                                                                                                     "format":  "uuid"
+                                                                                                 }
+                                                                              },
+                                                               "required":  [
+                                                                                "empleadoId"
+                                                                            ]
+                                                           },
+                                       "CategoryInput":  {
+                                                             "type":  "object",
+                                                             "properties":  {
+                                                                                "nombre":  {
+                                                                                               "type":  "string",
+                                                                                               "maxLength":  100,
+                                                                                               "minLength":  0
+                                                                                           }
+                                                                            },
+                                                             "required":  [
+                                                                              "nombre"
+                                                                          ]
+                                                         },
+                                       "Login":  {
+                                                     "type":  "object",
+                                                     "properties":  {
+                                                                        "nombre":  {
+                                                                                       "type":  "string",
+                                                                                       "minLength":  1
+                                                                                   },
+                                                                        "pin":  {
+                                                                                    "type":  "string",
+                                                                                    "minLength":  1,
+                                                                                    "pattern":  "\\d{4,12}"
+                                                                                }
+                                                                    },
+                                                     "required":  [
+                                                                      "nombre",
+                                                                      "pin"
+                                                                  ]
+                                                 },
+                                       "EmployeeInput":  {
+                                                             "type":  "object",
+                                                             "properties":  {
+                                                                                "nombre":  {
+                                                                                               "type":  "string",
+                                                                                               "maxLength":  120,
+                                                                                               "minLength":  0
+                                                                                           },
+                                                                                "rol":  {
+                                                                                            "type":  "string",
+                                                                                            "minLength":  1
+                                                                                        },
+                                                                                "pin":  {
+                                                                                            "type":  "string",
+                                                                                            "minLength":  1,
+                                                                                            "pattern":  "\\d{4,12}"
+                                                                                        }
+                                                                            },
+                                                             "required":  [
+                                                                              "nombre",
+                                                                              "pin",
+                                                                              "rol"
+                                                                          ]
+                                                         },
+                                       "Pin":  {
+                                                   "type":  "object",
+                                                   "properties":  {
+                                                                      "pin":  {
+                                                                                  "type":  "string",
+                                                                                  "minLength":  1,
+                                                                                  "pattern":  "\\d{4,12}"
+                                                                              }
+                                                                  },
+                                                   "required":  [
+                                                                    "pin"
+                                                                ]
+                                               },
+                                       "ChangePin":  {
+                                                         "type":  "object",
+                                                         "properties":  {
+                                                                            "pinActual":  {
+                                                                                              "type":  "string",
+                                                                                              "minLength":  1,
+                                                                                              "pattern":  "\\d{4,12}"
+                                                                                          },
+                                                                            "pinNuevo":  {
+                                                                                             "type":  "string",
+                                                                                             "minLength":  1,
+                                                                                             "pattern":  "\\d{4,12}"
+                                                                                         }
+                                                                        },
+                                                         "required":  [
+                                                                          "pinActual",
+                                                                          "pinNuevo"
+                                                                      ]
+                                                     },
+                                       "TableUpdate":  {
+                                                           "type":  "object",
+                                                           "properties":  {
+                                                                              "activa":  {
+                                                                                             "type":  "boolean"
+                                                                                         }
+                                                                          }
+                                                       },
+                                       "StationUpdate":  {
+                                                             "type":  "object",
+                                                             "properties":  {
+                                                                                "nombre":  {
+                                                                                               "type":  "string",
+                                                                                               "maxLength":  120,
+                                                                                               "minLength":  0
+                                                                                           },
+                                                                                "activa":  {
+                                                                                               "type":  "boolean"
+                                                                                           }
+                                                                            },
+                                                             "required":  [
+                                                                              "nombre"
+                                                                          ]
+                                                         },
+                                       "DeviceUpdate":  {
+                                                            "type":  "object",
+                                                            "properties":  {
+                                                                               "estacionId":  {
+                                                                                                  "type":  "string",
+                                                                                                  "format":  "uuid"
+                                                                                              },
+                                                                               "nombre":  {
+                                                                                              "type":  "string",
+                                                                                              "maxLength":  120,
+                                                                                              "minLength":  0
+                                                                                          },
+                                                                               "fabricante":  {
+                                                                                                  "type":  "string"
+                                                                                              },
+                                                                               "modelo":  {
+                                                                                              "type":  "string"
+                                                                                          },
+                                                                               "adaptador":  {
+                                                                                                 "type":  "string",
+                                                                                                 "minLength":  1
+                                                                                             },
+                                                                               "sistema":  {
+                                                                                               "type":  "string"
+                                                                                           },
+                                                                               "activa":  {
+                                                                                              "type":  "boolean"
+                                                                                          }
+                                                                           },
+                                                            "required":  [
+                                                                             "adaptador",
+                                                                             "estacionId",
+                                                                             "nombre"
+                                                                         ]
+                                                        },
+                                       "CategoryEdit":  {
+                                                            "type":  "object",
+                                                            "properties":  {
+                                                                               "nombre":  {
+                                                                                              "type":  "string",
+                                                                                              "maxLength":  100,
+                                                                                              "minLength":  0
+                                                                                          },
+                                                                               "activa":  {
+                                                                                              "type":  "boolean"
+                                                                                          }
+                                                                           },
+                                                            "required":  [
+                                                                             "nombre"
+                                                                         ]
+                                                        },
+                                       "EmployeeEdit":  {
+                                                            "type":  "object",
+                                                            "properties":  {
+                                                                               "nombre":  {
+                                                                                              "type":  "string",
+                                                                                              "maxLength":  120,
+                                                                                              "minLength":  0
+                                                                                          },
+                                                                               "rol":  {
+                                                                                           "type":  "string",
+                                                                                           "minLength":  1
+                                                                                       },
+                                                                               "activo":  {
+                                                                                              "type":  "boolean"
+                                                                                          }
+                                                                           },
+                                                            "required":  [
+                                                                             "nombre",
+                                                                             "rol"
+                                                                         ]
+                                                        },
+                                       "CsrfToken":  {
+                                                         "type":  "object",
+                                                         "properties":  {
+                                                                            "parameterName":  {
+                                                                                                  "type":  "string"
+                                                                                              },
+                                                                            "token":  {
+                                                                                          "type":  "string"
+                                                                                      },
+                                                                            "headerName":  {
+                                                                                               "type":  "string"
+                                                                                           }
+                                                                        }
+                                                     }
+                                   }
+                   }
+}

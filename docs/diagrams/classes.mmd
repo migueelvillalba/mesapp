@@ -1,0 +1,57 @@
+classDiagram
+  class AuthController {
+    +employees()
+    +login(Login)
+    +createEmployee(EmployeeInput)
+    +me()
+    +logout()
+  }
+  class OperationalController {
+    +tables()
+    +products()
+    +createOrder(OrderInput, idempotencyKey)
+    +changeState(StateInput)
+    +assignDelivery(AssignmentInput)
+    +syncStatus()
+  }
+  class OrderStatePolicy {
+    +transitionAllowed(from,to) boolean
+    +roleAllowed(role,to) boolean
+  }
+  class PrinterController {
+    +claim(token)
+    +result(token, Result)
+    +retry(admin, id)
+  }
+  class OutboxSyncWorker {
+    +synchronize()
+    +recordFailure(id, attempts, message, permanent)
+  }
+  class CentralSyncController {
+    +receive(token, SyncEvent[])
+  }
+  class OrderInput {
+    +String tipo
+    +UUID mesaId
+    +String destino
+    +OrderLine[] items
+  }
+  class OrderLine {
+    +UUID productoId
+    +int cantidad
+    +String observaciones
+  }
+  class PrinterAdapter {
+    <<interface>>
+    +print(PrintJob) PrintOutcome
+  }
+  class SimulatedPrinterAdapter
+  AuthController ..> JdbcTemplate : PIN BCrypt / session
+  OperationalController ..> JdbcTemplate : tenant-scoped SQL
+  OperationalController ..> OrderStatePolicy : validates
+  OperationalController ..> SimpMessagingTemplate : publish
+  PrinterController ..> JdbcTemplate : durable queue
+  OutboxSyncWorker ..> JdbcTemplate : poll / mark
+  OutboxSyncWorker ..> CentralSyncController : HTTPS JSON
+  SimulatedPrinterAdapter ..|> PrinterAdapter
+  OperationalController ..> OrderInput

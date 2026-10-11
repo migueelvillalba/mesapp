@@ -1,0 +1,14 @@
+sequenceDiagram
+  actor M as Mesero
+  participant F as Frontend
+  participant O as OperationalController
+  participant DB as PostgreSQL local
+  participant WS as STOMP cocina
+  M->>F: Selecciona mesa/productos
+  F->>O: POST /api/orders + Idempotency-Key
+  O->>DB: Valida mesa, menú y disponibilidad
+  O->>DB: Inserta pedido + snapshots + historial + print job + Outbox
+  DB-->>O: Commit local
+  O->>WS: Publica pedido confirmado
+  O-->>F: Pedido y total calculados por servidor
+  F-->>M: Confirma comanda

@@ -1,0 +1,12 @@
+.status.confirmado{background:#edf3ec;color:#638069}.status.enviado{background:#eef1f4;color:#687b89}.status.pendiente_verificacion{background:#fff3e7;color:#ac7448}.status.fallido{background:#faecea;color:#ad6157}
+.assign-delivery{display:flex;gap:5px}.assign-delivery select{max-width:120px;border:1px solid #e2e4dc;border-radius:6px;padding:6px;font-size:9px}
+.employee-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:12px 0}.employee-form label{display:flex;flex-direction:column;gap:5px;font-size:10px;color:#777}.employee-form input,.employee-form select{border:1px solid #e2e4dc;border-radius:6px;padding:8px;font-size:10px}.employee-form button{align-self:end}
+
+.workflow-tools{margin-bottom:18px}.workflow-tools h2{margin:0 0 7px;font-size:16px}.workflow-tools>p{color:#85877f;font-size:11px;margin:0 0 14px}.workflow-tools .catalog-list{margin:10px 0}.workflow-tools .catalog-row{gap:12px}.workflow-tools label{min-width:130px}.workflow-tools label input[type=checkbox]{width:16px;height:16px}.workflow-tools .check-line{display:flex;align-items:center;gap:8px}.workflow-tools .form-grid{margin:12px 0}.workflow-tools .setting-line{gap:12px;align-items:center}.workflow-tools .setting-line small{color:#92948d;text-align:right}
+
+.table-tile{padding:0;color:var(--ink);font:inherit;cursor:default;-webkit-text-fill-color:currentColor}
+.table-tile:disabled{opacity:1}
+.table-tile.selectable{cursor:pointer;transition:transform .15s,box-shadow .15s,border-color .15s}
+.table-tile.selectable:hover,.table-tile.selectable:focus-visible{transform:translateY(-2px);border-color:#85aa89;box-shadow:0 4px 12px #426f541c;outline:none}
+
+.activity-panel{padding:14px 16px}.activity-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}.activity-panel .activity-heading h2{margin:0;font-size:14px}.activity-count{border-radius:999px;background:#f1f4ef;color:#718171;padding:3px 8px;font-size:8px;font-weight:600}.activity-list{max-height:280px;overflow-y:auto;border-top:1px solid #f0f0eb}.activity-row{min-height:31px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;padding:5px 2px;border-bottom:1px solid #f3f3ef}.activity-main{display:flex;align-items:baseline;gap:7px;min-width:0}.activity-action{color:#657b68;font-size:9px;font-weight:600;text-transform:capitalize}.activity-actor{color:#92958d;font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.activity-date{color:#989b93;font-size:8px;white-space:nowrap}

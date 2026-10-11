@@ -1,0 +1,23 @@
+flowchart TB
+  subgraph Restaurante LAN
+    Browsers[Tablets / pantalla cocina]
+    Front[Frontend Vite en desarrollo]
+    API[Backend Java perfil local]
+    LocalDB[(PostgreSQL local con volumen)]
+    Win[Windows 11 + Java 21]
+    Sim[Spool de desarrollo]
+    Browsers --> Front
+    Front -->|/api, /ws proxy| API
+    API --> LocalDB
+    Win --> API
+    Win --> Sim
+  end
+  subgraph Nube a desplegar
+    Proxy[Reverse proxy HTTPS/WSS]
+    APICloud[Backend perfil central]
+    CloudDB[(PostgreSQL privado administrado)]
+    API -->|TLS outbound| Proxy
+    Proxy --> APICloud
+    APICloud --> CloudDB
+  end
+  Note[No se creó proveedor, dominio ni base cloud]
