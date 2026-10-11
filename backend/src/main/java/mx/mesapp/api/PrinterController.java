@@ -25,15 +25,16 @@ public class PrinterController {
     @GetMapping("/jobs") public Object pending(@RequestHeader(value="Authorization",required=false)String auth){authorize(auth);return jdbc.queryForList("SELECT t.id,t.pedido_id,t.estacion,t.estado,t.intentos,t.creado_en,p.tipo,p.mesa_id,p.destino,p.observaciones,p.total FROM trabajo_impresion t JOIN pedido p ON p.id=t.pedido_id WHERE t.restaurante_id=? AND t.estado='PENDIENTE' ORDER BY t.creado_en LIMIT 20",BootstrapData.RESTAURANT_ID);}
 
     @Transactional @PostMapping("/jobs/claim")
-    public Object claim(@RequestHeader(value="Authorization",required=false)String auth){
+    public Object claim(@RequestHeader(value="Authorization",required=false)String auth,@RequestParam(defaultValue="COCINA")String station){
         authorize(auth);
-        jdbc.update("UPDATE trabajo_impresion SET estado='PENDIENTE_VERIFICACION',ultimo_error='El agente no confirmó el resultado antes de vencer el reclamo; verifica antes de reimprimir',reclamo_expira_en=NULL,claim_token=NULL,actualizado_en=now() WHERE restaurante_id=? AND estado='ENVIADO' AND reclamo_expira_en<now()",BootstrapData.RESTAURANT_ID);
+        station=station.trim().toUpperCase(Locale.ROOT);if(!Set.of("COCINA","CAJA").contains(station))throw bad("Estacion de impresion invalida");
+        jdbc.update("UPDATE trabajo_impresion SET estado='PENDIENTE_VERIFICACION',ultimo_error='El agente no confirmo el resultado antes de vencer el reclamo; verifica antes de reimprimir',reclamo_expira_en=NULL,claim_token=NULL,actualizado_en=now() WHERE restaurante_id=? AND estacion=? AND estado='ENVIADO' AND reclamo_expira_en<now()",BootstrapData.RESTAURANT_ID,station);
         UUID claimToken=UUID.randomUUID();
-        var rows=jdbc.queryForList("UPDATE trabajo_impresion SET estado='ENVIADO',claim_token=?,reclamo_expira_en=now()+interval '2 minutes',intentos=intentos+1,actualizado_en=now() WHERE id=(SELECT id FROM trabajo_impresion WHERE restaurante_id=? AND estado='PENDIENTE' ORDER BY creado_en LIMIT 1 FOR UPDATE SKIP LOCKED) RETURNING id,pedido_id,estacion,claim_token",claimToken,BootstrapData.RESTAURANT_ID);
+        var rows=jdbc.queryForList("UPDATE trabajo_impresion SET estado='ENVIADO',claim_token=?,reclamo_expira_en=now()+interval '2 minutes',intentos=intentos+1,actualizado_en=now() WHERE id=(SELECT id FROM trabajo_impresion WHERE restaurante_id=? AND estacion=? AND estado='PENDIENTE' ORDER BY creado_en LIMIT 1 FOR UPDATE SKIP LOCKED) RETURNING id,pedido_id,estacion,claim_token",claimToken,BootstrapData.RESTAURANT_ID,station);
         if(rows.isEmpty())return org.springframework.http.ResponseEntity.noContent().build();
         var job=new HashMap<String,Object>(rows.get(0));
-        job.putAll(jdbc.queryForMap("SELECT tipo,mesa_id,destino,observaciones,total,creado_en FROM pedido WHERE id=? AND restaurante_id=?",job.get("pedido_id"),BootstrapData.RESTAURANT_ID));
-        job.put("items",jdbc.queryForList("SELECT nombre_snapshot AS nombre,cantidad,observaciones FROM detalle_pedido WHERE pedido_id=? ORDER BY id",job.get("pedido_id")));
+        job.putAll(jdbc.queryForMap("SELECT p.tipo,p.mesa_id,m.numero AS mesa_numero,e.nombre AS mesero,p.modalidad_servicio,p.destino,p.observaciones,p.total,p.creado_en FROM pedido p LEFT JOIN mesa m ON m.id=p.mesa_id JOIN empleado e ON e.id=p.empleado_id WHERE p.id=? AND p.restaurante_id=?",job.get("pedido_id"),BootstrapData.RESTAURANT_ID));
+        job.put("items",jdbc.queryForList("SELECT nombre_snapshot AS nombre,precio_snapshot AS precio,cantidad,observaciones FROM detalle_pedido WHERE pedido_id=? ORDER BY id",job.get("pedido_id")));
         return job;
     }
 

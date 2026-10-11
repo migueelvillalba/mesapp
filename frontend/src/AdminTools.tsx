@@ -84,7 +84,8 @@ function OrderTrail() {
 
 function AuditPanel() {
   const q = useQuery({ queryKey: ['audit'], queryFn: () => api<{ accion: string; creado_en: string; empleado?: string; recurso_id?: string }[]>('/audit') })
-  return <section className="card workflow-tools"><h2>Registro de actividad</h2>{q.isError ? <p role="alert">No se pudo cargar la auditoría.</p> : q.data?.length ? q.data.slice(0,30).map((a,i) => <div className="setting-line" key={i}><span>{a.accion}{a.empleado ? ` · ${a.empleado}` : ''}</span><small>{new Date(a.creado_en).toLocaleString('es-MX')}</small></div>) : <p>Todavía no hay acciones auditadas en esta instalación.</p>}</section>
+  const entries = q.data?.slice(0, 30) || []
+  return <section className="card workflow-tools activity-panel"><div className="activity-heading"><h2>Registro de actividad</h2>{entries.length > 0 && <span className="activity-count">{entries.length} recientes</span>}</div>{q.isError ? <p role="alert">No se pudo cargar la auditoría.</p> : entries.length ? <div className="activity-list" aria-label="Actividad reciente">{entries.map((a, i) => <div className="activity-row" key={i}><div className="activity-main"><span className="activity-action">{a.accion.replaceAll('_', ' ')}</span>{a.empleado && <span className="activity-actor">{a.empleado}</span>}</div><time className="activity-date" dateTime={a.creado_en}>{new Date(a.creado_en).toLocaleString('es-MX', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })}</time></div>)}</div> : <p>Todavía no hay acciones auditadas en esta instalación.</p>}</section>
 }
 
 function KitchenAges() {

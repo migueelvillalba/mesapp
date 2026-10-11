@@ -30,6 +30,9 @@ public class BootstrapData {
             UUID kitchenStation=UUID.nameUUIDFromBytes((RESTAURANT_ID+":estacion:COCINA").getBytes());
             jdbc.update("INSERT INTO estacion_impresion(id,restaurante_id,codigo,nombre) VALUES (?,?,?,?) ON CONFLICT(restaurante_id,codigo) DO NOTHING",kitchenStation,RESTAURANT_ID,"COCINA","Cocina");
             jdbc.update("INSERT INTO impresora(id,restaurante_id,estacion_id,nombre,fabricante,modelo,adaptador,sistema,activa) VALUES (?,?,?,?,?,?,?,?,true) ON CONFLICT(restaurante_id,estacion_id,nombre) DO NOTHING",UUID.nameUUIDFromBytes((RESTAURANT_ID+":impresora:simulada").getBytes()),RESTAURANT_ID,kitchenStation,"Agente simulado","MesApp","Desarrollo","SIMULADO","Windows");
+            UUID cashierStation=UUID.nameUUIDFromBytes((RESTAURANT_ID+":estacion:CAJA").getBytes());
+            jdbc.update("INSERT INTO estacion_impresion(id,restaurante_id,codigo,nombre) VALUES (?,?,?,?) ON CONFLICT(restaurante_id,codigo) DO NOTHING",cashierStation,RESTAURANT_ID,"CAJA","Caja");
+            jdbc.update("INSERT INTO impresora(id,restaurante_id,estacion_id,nombre,fabricante,modelo,adaptador,sistema,activa) VALUES (?,?,?,?,?,?,?,?,true) ON CONFLICT(restaurante_id,estacion_id,nombre) DO NOTHING",UUID.nameUUIDFromBytes((RESTAURANT_ID+":impresora:simulada:caja").getBytes()),RESTAURANT_ID,cashierStation,"Agente simulado caja","MesApp","Desarrollo","SIMULADO","Windows");
             String adminName = System.getenv("MESAPP_BOOTSTRAP_ADMIN_NAME");
             String adminPin = System.getenv("MESAPP_BOOTSTRAP_ADMIN_PIN");
             Integer count = jdbc.queryForObject("SELECT count(*) FROM empleado WHERE restaurante_id=?", Integer.class, RESTAURANT_ID);

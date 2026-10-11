@@ -73,13 +73,15 @@ public class AdministrationController {
     public Object editEmployee(@PathVariable UUID id,@Valid @RequestBody EmployeeEdit body,HttpSession session) {
         AuthController.require(session,"ADMINISTRADOR");
         if(!Set.of("MESERO","COCINA","ADMINISTRADOR","DOMICILIARIO").contains(body.rol()))throw bad("Rol inválido");
+        String name=body.nombre().trim();
+        if(Boolean.TRUE.equals(jdbc.queryForObject("SELECT EXISTS(SELECT 1 FROM empleado WHERE restaurante_id=? AND lower(nombre)=lower(?) AND id<>?)",Boolean.class,BootstrapData.RESTAURANT_ID,name,id)))throw conflict("Ya existe un empleado con ese nombre");
         if(!body.activo()&&id.equals(AuthController.userId(session)))throw conflict("No puedes desactivar tu propio usuario mientras tienes sesión activa");
         String previousRole=jdbc.query("SELECT rol FROM empleado WHERE id=? AND restaurante_id=? FOR UPDATE",rs->rs.next()?rs.getString(1):null,id,BootstrapData.RESTAURANT_ID);
         if(previousRole==null)throw missing("Empleado no encontrado");
         if(previousRole.equals("ADMINISTRADOR")&&(!body.activo()||!body.rol().equals("ADMINISTRADOR"))&&jdbc.queryForObject("SELECT count(*) FROM empleado WHERE restaurante_id=? AND rol='ADMINISTRADOR' AND activo",Integer.class,BootstrapData.RESTAURANT_ID)<=1)throw conflict("El restaurante debe conservar al menos un administrador activo");
-        jdbc.update("UPDATE empleado SET nombre=?,rol=?,activo=?,version=version+1 WHERE id=? AND restaurante_id=?",body.nombre().trim(),body.rol(),body.activo(),id,BootstrapData.RESTAURANT_ID);
+        jdbc.update("UPDATE empleado SET nombre=?,rol=?,activo=?,version=version+1 WHERE id=? AND restaurante_id=?",name,body.rol(),body.activo(),id,BootstrapData.RESTAURANT_ID);
         audit.record(session,"EMPLEADO_EDITADO",id,Map.of("rolAnterior",previousRole,"rol",body.rol(),"activo",body.activo()));
-        long version=jdbc.queryForObject("SELECT version FROM empleado WHERE id=?",Long.class,id);syncEvents.record(id,version,"EMPLEADO_ACTUALIZADO",Map.of("id",id,"nombre",body.nombre().trim(),"rol",body.rol(),"activo",body.activo()));
+        long version=jdbc.queryForObject("SELECT version FROM empleado WHERE id=?",Long.class,id);syncEvents.record(id,version,"EMPLEADO_ACTUALIZADO",Map.of("id",id,"nombre",name,"rol",body.rol(),"activo",body.activo()));
         return Map.of("actualizado",true);
     }
 

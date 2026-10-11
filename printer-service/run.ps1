@@ -2,7 +2,7 @@ $ErrorActionPreference = 'Stop'
 $workspaceEnv = Join-Path $PSScriptRoot '..\.env'
 if (Test-Path -LiteralPath $workspaceEnv) {
     foreach ($line in Get-Content -LiteralPath $workspaceEnv) {
-        if ($line -match '^\s*(MESAPP_PRINTER_TOKEN|MESAPP_LOCAL_URL|MESAPP_PRINTER_SPOOL)\s*=\s*(.*?)\s*$') {
+        if ($line -match '^\s*(MESAPP_PRINTER_TOKEN|MESAPP_LOCAL_URL|MESAPP_PRINTER_SPOOL|MESAPP_PRINTER_STATION|MESAPP_PRINTER_ADAPTER|MESAPP_PRINTER_NAME)\s*=\s*(.*?)\s*$') {
             $key = $Matches[1]
             $value = $Matches[2].Trim('"').Trim("'")
             if ([string]::IsNullOrWhiteSpace([Environment]::GetEnvironmentVariable($key))) { [Environment]::SetEnvironmentVariable($key, $value, 'Process') }
